@@ -16,12 +16,18 @@ __author__ = ['Henri Bunting', 'Robert Meyer']
 import ast
 
 import brian2.numpy_ as np
-from brian2.units.fundamentalunits import Quantity, get_unit_fast, have_same_dimensions
+from brian2.units.fundamentalunits import Quantity, have_same_dimensions, get_dimensions
 from brian2.monitors import SpikeMonitor, StateMonitor, PopulationRateMonitor
 import brian2.units.allunits as allunits
 
 import pypet.pypetexceptions as pex
 from pypet.parameter import Parameter, Result, ObjectTable
+
+def get_unit_fast(x):
+    '''
+    Return a `Quantity` with value 1 and the same dimensions.
+    '''
+    return Quantity.with_dimensions(1, get_dimensions(x))
 
 
 ALLUNITS = {}
